@@ -22,4 +22,12 @@ public class LoginTest extends BaseTest {
         loginPage.login("standard_user", "wrong_password");
         Assert.assertTrue(loginPage.getErrorMessageText().contains("do not match any user"));
     }
+
+    @Test
+    public void loginWithEmptyUsernameShouldShowErrorMessage(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.open();
+        loginPage.login("", "secret_sauce");
+        Assert.assertTrue(loginPage.getErrorMessageText().contains("Username is required"));
+    }
 }
