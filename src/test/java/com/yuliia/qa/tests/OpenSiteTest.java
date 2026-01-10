@@ -8,8 +8,8 @@ import com.yuliia.qa.core.BaseTest;
 public class OpenSiteTest extends BaseTest{
     @Test
     public void openSauceDemoHomePage() {
-        driver.get("https://www.saucedemo.com/");
         LoginPage loginPage = new LoginPage(driver);
+        loginPage.open();
         Assert.assertTrue(loginPage.isLoginButtonVisible(),
                 "Login button should be visible on the login page");
     }
