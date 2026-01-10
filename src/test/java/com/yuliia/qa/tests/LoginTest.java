@@ -14,4 +14,12 @@ public class LoginTest extends BaseTest {
         InventoryPage inventoryPage = loginPage.login("standard_user", "secret_sauce");
         Assert.assertTrue(inventoryPage.isLoaded(), "Inventory page should be loaded after login");
     }
+
+    @Test
+    public void loginWithInvalidPasswordShouldShowErrorMessage(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.open();
+        loginPage.login("standard_user", "wrong_password");
+        Assert.assertTrue(loginPage.getErrorMessageText().contains("do not match any user"));
+    }
 }
