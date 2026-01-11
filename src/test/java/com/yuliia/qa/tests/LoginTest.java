@@ -30,4 +30,15 @@ public class LoginTest extends BaseTest {
         loginPage.login("", "secret_sauce");
         Assert.assertTrue(loginPage.getErrorMessageText().contains("Username is required"));
     }
+
+    @Test
+    public void loginWithEmptyPasswordShouldShowErrorMessage(){
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.open();
+        loginPage.login("standard_user", "");
+        Assert.assertTrue(
+                loginPage.getErrorMessageText().contains("Password is required"),
+                "Expected 'Password is required' error, but got: " + loginPage.getErrorMessageText()
+        );
+    }
 }
