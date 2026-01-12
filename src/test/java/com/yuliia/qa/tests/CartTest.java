@@ -17,7 +17,9 @@ public class CartTest extends BaseTest {
         InventoryPage inventoryPage = loginPage.login("standard_user", "secret_sauce");
         inventoryPage.addBackpackToCart();
         CartPage cartPage = inventoryPage.openCart();
-        Assert.assertTrue(cartPage.isLoaded(), "Cart page should be loaded after clicking cart icon");
+        Assert.assertTrue(cartPage.isLoaded(), "Cart page should be loaded");
+        Assert.assertTrue(cartPage.hasItemNamed("Sauce Labs Backpack"),
+                "Expected 'Sauce Labs Backpack' to be present in the cart");
     }
 }
 
