@@ -8,6 +8,9 @@ public class CartPage {
     private final WebDriver driver;
     private final By cartContainer = By.id("cart_contents_container");
     private final By cartItemNames = By.className("inventory_item_name");
+    private final By cartItems = By.className("cart_item");
+    private final By removeBackpackButton = By.id("remove-sauce-labs-backpack");
+
 
     public CartPage(WebDriver driver) {
         this.driver = driver;
@@ -20,6 +23,14 @@ public class CartPage {
     public boolean hasItemNamed(String expectedName) {
         return driver.findElements(cartItemNames).stream()
                 .anyMatch(element -> element.getText().equals(expectedName));
+    }
+
+    public void removeBackpack(){
+        driver.findElement(removeBackpackButton).click();
+    }
+
+    public boolean isEmpty() {
+        return driver.findElements(cartItems).isEmpty();
     }
 
 }
