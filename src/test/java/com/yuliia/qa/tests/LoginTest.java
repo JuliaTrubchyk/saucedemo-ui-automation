@@ -15,7 +15,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(inventoryPage.isLoaded(), "Inventory page should be loaded after login");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void loginWithInvalidPasswordShouldShowErrorMessage(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
@@ -23,7 +23,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginPage.getErrorMessageText().contains("do not match any user"));
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void loginWithEmptyUsernameShouldShowErrorMessage(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
@@ -31,7 +31,7 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(loginPage.getErrorMessageText().contains("Username is required"));
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void loginWithEmptyPasswordShouldShowErrorMessage(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();

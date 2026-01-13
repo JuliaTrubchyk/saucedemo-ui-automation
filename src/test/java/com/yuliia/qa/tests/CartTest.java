@@ -22,7 +22,7 @@ public class CartTest extends BaseTest {
                 "Expected 'Sauce Labs Backpack' to be present in the cart");
     }
 
-    @Test
+    @Test(groups = {"regression"})
     public void removeItemFromCartShouldMakeCartEmpty(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
