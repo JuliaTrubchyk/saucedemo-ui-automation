@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void addProductToCartAndOpenCart() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();

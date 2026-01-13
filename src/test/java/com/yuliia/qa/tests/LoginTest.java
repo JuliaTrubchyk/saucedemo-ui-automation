@@ -7,7 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void loginWithValidUserShouldOpenInventoryPage(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();

@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 import com.yuliia.qa.core.BaseTest;
 
 public class OpenSiteTest extends BaseTest{
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void openSauceDemoHomePage() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
