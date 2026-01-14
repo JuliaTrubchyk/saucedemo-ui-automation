@@ -1,5 +1,6 @@
 package com.yuliia.qa.pages;
 
+import com.yuliia.qa.utils.Waits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,11 +14,11 @@ public class CheckoutOverviewPage {
     }
 
     public boolean isLoaded() {
-        return driver.findElement(finishButton).isDisplayed();
+        return Waits.visible(driver, finishButton).isDisplayed();
     }
 
     public CheckoutCompletePage clickFinish() {
-        driver.findElement(finishButton).click();
+        Waits.clickable(driver, finishButton).click();
         return new CheckoutCompletePage(driver);
     }
 

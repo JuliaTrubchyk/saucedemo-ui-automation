@@ -19,6 +19,7 @@ public class CheckoutTest extends BaseTest {
         CheckoutPage checkoutPage = cartPage.goToCheckout();
         Assert.assertTrue(checkoutPage.isLoaded());
         CheckoutOverviewPage checkoutOverviewPage = checkoutPage.submitInfo("Yuliia", "Smith", "12345");
+        Assert.assertTrue(checkoutOverviewPage.isLoaded(), "Checkout overview page should be loaded");
         CheckoutCompletePage checkoutCompletePage = checkoutOverviewPage.clickFinish();
         Assert.assertTrue(checkoutCompletePage.isLoaded(), "Checkout complete page should be loaded");
         Assert.assertEquals(checkoutCompletePage.getSuccessText(), "Thank you for your order!");

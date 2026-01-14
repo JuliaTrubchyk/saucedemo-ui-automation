@@ -1,5 +1,6 @@
 package com.yuliia.qa.pages;
 
+import com.yuliia.qa.utils.Waits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,11 +15,11 @@ public class CheckoutCompletePage {
     }
 
     public String getSuccessText() {
-        return driver.findElement(successText).getText();
+        return Waits.visible(driver, successText).getText();
     }
 
     public boolean isLoaded() {
-        return driver.findElement(successText).isDisplayed();
+        return Waits.visible(driver, successText).isDisplayed();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.yuliia.qa.pages;
 
+import com.yuliia.qa.utils.Waits;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -35,7 +36,7 @@ public class CartPage {
     }
 
     public CheckoutPage goToCheckout(){
-        driver.findElement(checkoutButton).click();
+        Waits.clickable(driver, checkoutButton).click();
         return new CheckoutPage(driver);
     }
 
