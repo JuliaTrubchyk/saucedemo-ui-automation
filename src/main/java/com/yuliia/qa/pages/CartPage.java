@@ -10,6 +10,7 @@ public class CartPage {
     private final By cartItemNames = By.className("inventory_item_name");
     private final By cartItems = By.className("cart_item");
     private final By removeBackpackButton = By.id("remove-sauce-labs-backpack");
+    private final By checkoutButton = By.id("checkout");
 
 
     public CartPage(WebDriver driver) {
@@ -31,6 +32,11 @@ public class CartPage {
 
     public boolean isEmpty() {
         return driver.findElements(cartItems).isEmpty();
+    }
+
+    public CheckoutPage goToCheckout(){
+        driver.findElement(checkoutButton).click();
+        return new CheckoutPage(driver);
     }
 
 }
