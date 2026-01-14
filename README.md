@@ -36,11 +36,11 @@ From the project root:
 
 Smoke:
 ```bash
-mvn -DsuiteXmlFile=src/test/resources/test-suites/smoke.xml test
+mvn test -DsuiteXmlFile=src/test/resources/test-suites/smoke.xml test
 ```
 Regression:
 ```bash
-mvn -DsuiteXmlFile=src/test/resources/test-suites/regression.xml test
+mvn test -DsuiteXmlFile=src/test/resources/test-suites/regression.xml test
 ```
 
 ### Configuration
