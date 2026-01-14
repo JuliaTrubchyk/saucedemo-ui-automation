@@ -11,6 +11,8 @@ public class CheckoutPage {
     private final By lastNameInput = By.id("last-name");
     private final By zipCodeInput = By.id("postal-code");
     private final By continueButton = By.id("continue");
+    private final By errorMessage = By.cssSelector("[data-test='error']");
+
 
 
     public CheckoutPage(WebDriver driver) {
@@ -41,6 +43,10 @@ public class CheckoutPage {
 
     public void clickContinue(){
         driver.findElement(continueButton).click();
+    }
+
+    public String getErrorMessageText() {
+        return driver.findElement(errorMessage).getText();
     }
 
 
