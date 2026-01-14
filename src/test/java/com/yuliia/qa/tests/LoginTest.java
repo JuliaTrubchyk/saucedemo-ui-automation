@@ -1,5 +1,6 @@
 package com.yuliia.qa.tests;
 
+import com.yuliia.qa.config.Config;
 import com.yuliia.qa.core.BaseTest;
 import com.yuliia.qa.pages.InventoryPage;
 import com.yuliia.qa.pages.LoginPage;
@@ -11,7 +12,7 @@ public class LoginTest extends BaseTest {
     public void loginWithValidUserShouldOpenInventoryPage(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
-        InventoryPage inventoryPage = loginPage.login("standard_user", "secret_sauce");
+        InventoryPage inventoryPage = loginPage.login(Config.get("username"), Config.get("password"));
         Assert.assertTrue(inventoryPage.isLoaded(), "Inventory page should be loaded after login");
     }
 
@@ -19,7 +20,7 @@ public class LoginTest extends BaseTest {
     public void loginWithInvalidPasswordShouldShowErrorMessage(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
-        loginPage.login("standard_user", "wrong_password");
+        loginPage.login(Config.get("username"), "wrong_password");
         Assert.assertTrue(loginPage.getErrorMessageText().contains("do not match any user"));
     }
 
@@ -27,7 +28,7 @@ public class LoginTest extends BaseTest {
     public void loginWithEmptyUsernameShouldShowErrorMessage(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
-        loginPage.login("", "secret_sauce");
+        loginPage.login("", Config.get("password"));
         Assert.assertTrue(loginPage.getErrorMessageText().contains("Username is required"));
     }
 
@@ -35,7 +36,7 @@ public class LoginTest extends BaseTest {
     public void loginWithEmptyPasswordShouldShowErrorMessage(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
-        loginPage.login("standard_user", "");
+        loginPage.login(Config.get("username"), "");
         Assert.assertTrue(
                 loginPage.getErrorMessageText().contains("Password is required"),
                 "Expected 'Password is required' error, but got: " + loginPage.getErrorMessageText()

@@ -1,5 +1,6 @@
 package com.yuliia.qa.pages;
 
+import com.yuliia.qa.config.Config;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -19,7 +20,7 @@ public class LoginPage {
     }
 
     public void open() {
-        driver.get(url);
+        driver.get(Config.get("baseUrl"));
     }
 
     public void enterUsername(String username){

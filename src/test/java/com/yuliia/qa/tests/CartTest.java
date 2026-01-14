@@ -1,5 +1,6 @@
 package com.yuliia.qa.tests;
 
+import com.yuliia.qa.config.Config;
 import com.yuliia.qa.core.BaseTest;
 import com.yuliia.qa.pages.CartPage;
 import com.yuliia.qa.pages.InventoryPage;
@@ -14,7 +15,7 @@ public class CartTest extends BaseTest {
     public void addProductToCartAndOpenCart() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
-        InventoryPage inventoryPage = loginPage.login("standard_user", "secret_sauce");
+        InventoryPage inventoryPage = loginPage.login(Config.get("username"), Config.get("password"));
         inventoryPage.addBackpackToCart();
         CartPage cartPage = inventoryPage.openCart();
         Assert.assertTrue(cartPage.isLoaded(), "Cart page should be loaded");
@@ -26,7 +27,7 @@ public class CartTest extends BaseTest {
     public void removeItemFromCartShouldMakeCartEmpty(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.open();
-        InventoryPage inventoryPage = loginPage.login("standard_user", "secret_sauce");
+        InventoryPage inventoryPage = loginPage.login(Config.get("username"), Config.get("password"));
         inventoryPage.addBackpackToCart();
         CartPage cartPage = inventoryPage.openCart();
         cartPage.removeBackpack();
