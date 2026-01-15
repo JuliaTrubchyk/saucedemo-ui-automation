@@ -10,6 +10,14 @@ UI test automation framework for SauceDemo (Swag Labs): https://www.saucedemo.co
 - Page Object Model (POM)
 - IntelliJ IDEA
 
+
+## Key Framework Features
+- Page Object Model (separate page classes and test classes)
+- TestNG suites (smoke/regression) + groups for test selection
+- Config-driven credentials and base URL (`config.properties`)
+- Automatic screenshots on test failure (`target/screenshots`)
+- Explicit wait helpers (`Waits`) for stable UI interactions
+
 ## Test Coverage (examples)
 - Login
     - Valid login
