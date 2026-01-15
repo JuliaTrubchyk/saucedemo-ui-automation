@@ -6,6 +6,7 @@ import com.yuliia.qa.utils.Waits;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,8 +61,17 @@ public class InventoryPage {
     }
 
     public List<Double> getItemPrices() {
-        return driver.findElements(itemPrices).stream()
-                .map(e -> Double.parseDouble(e.getText().replace("$", "")))
-                .toList();
+        List<WebElement> elements = driver.findElements(itemPrices);
+
+        List<Double> prices = new ArrayList<>();
+
+        for (WebElement e : elements) {
+            String text = e.getText();          // "$29.99"
+            String number = text.replace("$", ""); // "29.99"
+            double value = Double.parseDouble(number); // 29.99
+            prices.add(value);
+        }
+
+        return prices;
     }
 }

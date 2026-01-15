@@ -18,6 +18,8 @@ UI test automation framework for SauceDemo (Swag Labs): https://www.saucedemo.co
 - Cart
     - Add item to cart and verify it is present
     - Remove item and verify cart updates
+- Inventory
+    - Sort products by Price (low to high) and verify order
 - Checkout
     - Happy path checkout (complete order)
     - Required fields validation (first name / last name / postal code)
