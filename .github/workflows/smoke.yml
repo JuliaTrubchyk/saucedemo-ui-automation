@@ -1,0 +1,35 @@
+name: Smoke UI Tests (TestNG)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Java (Temurin 17)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: maven
+
+      - name: Run Smoke suite
+        run: mvn -q test -DsuiteXmlFile=src/test/resources/test-suites/smoke.xml
+
+      - name: Upload Surefire reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports-smoke
+          path: |
+            **/target/surefire-reports/**
+          if-no-files-found: ignore
