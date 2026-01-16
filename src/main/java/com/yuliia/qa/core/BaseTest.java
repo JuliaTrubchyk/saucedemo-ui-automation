@@ -26,6 +26,14 @@ public class BaseTest {
         options.addArguments("--disable-notifications");
         options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding");
 
+        boolean isCI = "true".equalsIgnoreCase(System.getenv("CI"));
+        if (isCI) {
+            options.addArguments("--headless=new");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--window-size=1920,1080");
+        }
+
         driver = new ChromeDriver(options);
     }
 
