@@ -25,11 +25,11 @@ jobs:
       - name: Run Smoke suite
         run: mvn -q test -DsuiteXmlFile=src/test/resources/test-suites/smoke.xml
 
-      - name: Upload Surefire reports
+      - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: surefire-reports-smoke
+          name: screenshots-smoke
           path: |
-            **/target/surefire-reports/**
+            target/screenshots/**
           if-no-files-found: ignore
