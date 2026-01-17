@@ -1,22 +1,26 @@
-# SauceDemo UI Automation (Selenium + TestNG)
+## SauceDemo UI Automation (Selenium + TestNG)
 
 UI test automation framework for SauceDemo (Swag Labs): https://www.saucedemo.com/
 
+This project demonstrates a real-world UI automation setup: **Page Object Model**, **smoke/regression suites**, and **CI runs in GitHub Actions** with downloadable **test reports** and **failure screenshots**.
 ## Tech Stack
-- Oracle OpenJDK 21.0.3
+- Java 21 (Temurin / OpenJDK)
 - Selenium 4.39.0
 - Maven
 - TestNG 7.11.0
 - Page Object Model (POM)
 - IntelliJ IDEA
+- GitHub Actions (CI)
 
 
-## Key Framework Features
-- Page Object Model (separate page classes and test classes)
-- TestNG suites (smoke/regression) + groups for test selection
-- Config-driven credentials and base URL (`config.properties`)
-- Automatic screenshots on test failure (`target/screenshots`)
-- Explicit wait helpers (`Waits`) for stable UI interactions
+## Framework Highlights
+- **Page Object Model (POM)**: page classes separated from tests
+- **TestNG suite execution**: `smoke.xml` and `regression.xml`
+- **Groups support** for flexible test selection
+- **Config-driven** base URL + credentials via `config.properties`
+- **Explicit waits** (custom `Waits` helpers) for stable UI interactions
+- **Screenshots on failure** saved to `target/screenshots/`
+- **CI-ready** Chrome runs **headless** in GitHub Actions (Linux runners)
 
 ## Test Coverage (examples)
 - Login
@@ -33,7 +37,7 @@ UI test automation framework for SauceDemo (Swag Labs): https://www.saucedemo.co
     - Required fields validation (first name / last name / postal code)
 - Logout
 
-## How to Run
+## How to Run Locally
 
 ### Option 1: Run from IntelliJ
 1. Open `src/test/resources/test-suites/`
@@ -70,6 +74,21 @@ Example keys:
 When a test fails, a screenshot is saved to:
 
 `target/screenshots/`
+
+## CI/CD (GitHub Actions)
+
+- **Smoke** runs on every **push** and **pull request**
+- **Regression** runs **nightly** on a schedule (and can be started manually)
+
+Workflows:
+- `.github/workflows/smoke.yml`
+- `.github/workflows/nightly-regression.yml`
+
+Reports:
+- GitHub → **Actions** → open a run → **Artifacts**
+- **Surefire reports**: `target/surefire-reports/` (always)
+- **Screenshots**: `target/screenshots/` (only if created, usually on failures)
+
 
 ### Project Structure (high level)
 
