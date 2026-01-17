@@ -23,11 +23,11 @@ jobs:
       - name: Run Regression suite
         run: mvn test -e -DsuiteXmlFile=src/test/resources/test-suites/regression.xml
 
-      - name: Upload Surefire reports
+      - name: Upload screenshots
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: surefire-reports-regression
+          name: screenshots-regression
           path: |
-            **/target/surefire-reports/**
+            target/screenshots/**
           if-no-files-found: ignore
