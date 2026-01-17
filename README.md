@@ -1,5 +1,8 @@
 ## SauceDemo UI Automation (Selenium + TestNG)
 
+[![Smoke UI Tests (TestNG)](https://github.com/JuliaTrubchyk/saucedemo-ui-automation/actions/workflows/smoke.yml/badge.svg?branch=main)](https://github.com/JuliaTrubchyk/saucedemo-ui-automation/actions/workflows/smoke.yml)
+[![Nightly Regression UI Tests (TestNG)](https://github.com/JuliaTrubchyk/saucedemo-ui-automation/actions/workflows/nightly-regression.yml/badge.svg?branch=main)](https://github.com/JuliaTrubchyk/saucedemo-ui-automation/actions/workflows/nightly-regression.yml)
+
 UI test automation framework for SauceDemo (Swag Labs): https://www.saucedemo.com/
 
 This project demonstrates a real-world UI automation setup: **Page Object Model**, **smoke/regression suites**, and **CI runs in GitHub Actions** with downloadable **test reports** and **failure screenshots**.
